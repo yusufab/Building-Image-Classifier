@@ -5,6 +5,7 @@ from PIL import Image
 import io
 import torch
 import torch.nn as nn
+import uvicorn
 
 # Load the trained model
 MODEL_PATH = "cnn_model.pth"
@@ -81,4 +82,7 @@ async def predict(file: UploadFile = File(...)):
         return {"error": f"Prediction failed: {str(e)}"}
 
 
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Use Azure's dynamic port if available
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
