@@ -1,3 +1,4 @@
+import os
 import torch
 import torchvision.transforms as transforms
 from fastapi import FastAPI, File, UploadFile
